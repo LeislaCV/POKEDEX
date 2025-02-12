@@ -1,43 +1,17 @@
 from app import mongo
+from app.models.super_clase import SuperClass
 
-class Pokemon:
-    collection = mongo.db.pokemons #Llave
+class Pokemon(SuperClass): #La clase pokemon se esta heredando de la superclase
+    def __init__(self): #Metodo super, hace referencia al padre SuperClase
+      super().__init__("pokemons") #Los nombres de colecciones siempre deben ser iguales
 
-    #Crear metodos, estaticos el estatico no lo podemos modificar
-    #Metodo statico se crea con un arroba @
-    #decorador - le asigna un saco a una funcion  
+      #ABSTRACCIÓN
 
-    @staticmethod
-    def find_all():
-        pokemons = Pokemon.collection.find() #Devuelve un tipo cursor, no es arreglo "cursos" manejador de datos
-        return list(pokemons) #Metodo para encontrar todos los pokemones
-
-    @staticmethod
-    def find_by_id(pokemon_id): #Metodo para encontrar el pokemon unicamente por el "ID"
-        pokemon = Pokemon.collection.find_one({ #Para crear un filtro es similar al crear un objeto
-            "_id": pokemon_id
-        }) 
-        return pokemon
-    
-    @staticmethod 
-    def create(data): #Metodo para crear un pokemon
-        pokemon = Pokemon.collection.insert_one(data)
-        return pokemon.inserted_id #Nos retorna el "ID" del pokemon que creamos
-    
-    @staticmethod
-    def update(pokemon_id, data): #Metodo para guardar el pokemonn
-        pokemon = Pokemon.collection.update_one({
-            "_id": pokemon_id
-        },{
-            "$set": data 
-        })
-        return pokemon
-    
-    @staticmethod
-    def delete(pokemon_id): #Metodo para eliminar el pokemon
-        return Pokemon.collection.delete_one({"_id": pokemon_id})
-
-    
-
-    #Dos colecciones una de usuarios y otra de pokemones, pokemones guardados
-    
+    def create(self, data):
+         raise NotImplementedError("Los pokemons bola no se pueden crear") #Lanza errores, forma en python raise
+      
+    def delete(self, object_id):
+         raise NotImplementedError("Los pokemons bola no se pueden crear")
+   
+    def update(self, obect_id):
+         raise NotImplementedError("Los pokemons bola no se pueden crear") #Lanza errores, forma en python r
