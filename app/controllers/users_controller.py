@@ -1,6 +1,6 @@
 #Ruteo
 from flask import Blueprint, request, jsonify #Blueprint seccionar el servidor por carpetitas, Request maneja la peticion que haga el usuario, jsonify  response  
-from app.schemas.user_schema import UserSchema
+from app.schemas.users_schema import UserSchema
 from marshmallow import ValidationError
 from app.models.factory import ModelFactory #Traer la colección de usuarios
 from bson import ObjectId #Formato que maneja mongo

@@ -2,12 +2,12 @@
 #MODIFICAR EL MODELO Y EVITAR QUE LOS USUARIOS USEN METODOS INDEBIDOS
 #METODOS: CREATE, DELETE
 from flask import Blueprint, request, jsonify #Blueprint seccionar el servidor por carpetitas, Request maneja la peticion que haga el usuario, jsonify  response  
-from app.schemas.pokemons_favorite_shcema import PokemonFavoriteSchema
+from app.schemas.pokemons_favorites_schema import PokemonFavoriteSchema
 from marshmallow import ValidationError
 from app.models.factory import ModelFactory #Traer la colección de usuarios
 from bson import ObjectId #Formato que maneja mongo
 
-bd = Blueprint("pokemon_favorito", __name__, url_prefix="/pokemon_favorite")
+bp = Blueprint("pokemon_favorite", __name__, url_prefix="/pokemon_favorite")
 pokemon_favorite_schema = PokemonFavoriteSchema() #Instanciar
 pokemon_favorite_model = ModelFactory.get_model("pokemon_favorites") #Ir por el modelo de POKEMONES FAVORITOS que ya declaramos
 
