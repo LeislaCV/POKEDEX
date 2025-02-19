@@ -34,5 +34,5 @@ class SuperClass:
 
     
 
-    #Dos colecciones una de usuarios y otra de pokemones, pokemones guardados
+    #Dos colecciones una de usuarios y otra de pokemones, pokemones favoritos
     

@@ -11,5 +11,5 @@ class ModelFactory: #Instancear
             "pokemon:favorites": PokemonFavorites
         }
         if collection_name in models:
-            return models[collection_name]() #Estamos instanceando la clase
+            return models[collection_name]() #Estamos instanceando la clase 
         raise ValueError(f"Upss, la colección enviado: {collection_name} no existe") #f - concatenar los strings de manera dinamica
