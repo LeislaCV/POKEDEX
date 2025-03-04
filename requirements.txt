@@ -3,3 +3,5 @@ Flask-PyMongo
 flask-cors #
 python-dotenv #Nos permite usar el .env del proyecto
 marshmallow
+flask-jwt-extended #Crea un token que la libreria ayuda a intenticar, incrementa la seguridad
+bcrypt #Encripa las contraseña

@@ -4,7 +4,7 @@ class ResponseManager:
     
     #SUCCES es la que nos dira que esta todo chido:)
     def success(self, data): #data, puede ser string
-        if type(data) == "str":
+        if isinstance(data, str): #Si es una instancia de tipo
             data = { #Se sustituyte para que devuelva un objeto
                 "message": data 
             }
@@ -12,7 +12,7 @@ class ResponseManager:
     
     #ERROR, es el que nos dira que esta todo mal por parte del usuario:(
     def error(self, data = "Invaid request"): 
-        if type(data) == "str":
+        if isinstance(data, str): #Si es una instancia de tipo
             data = {
                 "message": data
             }
@@ -20,7 +20,7 @@ class ResponseManager:
     
     #ERROR_SERVER, es el que nos dira que esta todo mal por parte de nosotros:(
     def error_server(self, data = "SERVER ERROR"): 
-        if type(data) == "str":
+        if isinstance(data, str): #Si es una instancia de tipo texto
             data = {
                 "message": data
             }

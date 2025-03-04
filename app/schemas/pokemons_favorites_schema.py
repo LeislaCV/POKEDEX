@@ -9,10 +9,3 @@ class PokemonFavoriteSchema(Schema):
         }
     )
 
-    user_id = fields.Str(
-        required = True, #lamda, funcion flecha de python
-        validate = lambda x: len(x) > 0,
-        error_messages={
-            "required": "Upsi, el id del usuario es requerido"
-        }
-    )

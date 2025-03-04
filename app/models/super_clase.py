@@ -15,6 +15,8 @@ class SuperClass:
         datum = self.collection.find_one({ 
             "_id": object_id
         }) 
+        if datum: 
+            datum["_id"] = str(datum["_id"])
         return datum
     
     def create(self, data): 
@@ -22,11 +24,15 @@ class SuperClass:
         return str(datum.inserted_id) 
     
     def update(self, object_id, data): #Metodo para guardar el pokemonn
-        datum = self.collection.update_one({
+        self.collection.update_one({
             "_id": object_id
         },{
             "$set": data 
         })
+        datum = self.collection.find_one({
+            "_id": object_id
+        })
+        datum["_id"] = str(datum["_id"])
         return datum
     
     def delete(self, object_id): #Metodo para eliminar el pokemon

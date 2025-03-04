@@ -1,6 +1,6 @@
-from app.models.pokemon import Pokemon
-from app.models.pokemon_favorite import PokemonFavorites
-from app.models.users import Users
+from app.models.pokemon_model import Pokemon
+from app.models.pokemon_favorite_model import PokemonFavorites
+from app.models.users_model import Users
 
 class ModelFactory: #Instancear
     @staticmethod
@@ -8,7 +8,7 @@ class ModelFactory: #Instancear
         models = {
             "users": Users,
             "pokemons": Pokemon,
-            "pokemon:favorites": PokemonFavorites
+            "pokemon_favorite": PokemonFavorites
         }
         if collection_name in models:
             return models[collection_name]() #Estamos instanceando la clase 
