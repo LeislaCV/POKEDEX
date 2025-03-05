@@ -24,7 +24,7 @@ def create():
         data = pokemon_favorite_schema.load(request.json) #Valida la informacion que se esta mandando, si algo anda mal va lanzar un error, error de validación "try, except"
         data["user_id"] = user_id
         pokemon_favorite_id = pokemon_favorite_model.create(data)  #Retorna el id insertado tipo especifico ObjectId
-        return RM.succes({pokemon_favorite_id:str(pokemon_favorite_id)}) #200 es un código de respuesta
+        return RM.succes({"_id":str(pokemon_favorite_id)}) #200 es un código de respuesta
 
     except ValidationError as err:
         print(err)
@@ -40,9 +40,9 @@ def delete(pokemon_favorite_id):
 
     #OBTENER
 
-@bp.route("/get/<string:user_id>", methods = ["GET"])
+@bp.route("/get", methods = ["GET"])
 @jwt_required()
-def get_pokemon_favorite(user_id):
+def get_pokemon_favorite():
    user_id = get_jwt_identity()
    pokemon_favorite = pokemon_favorite_model.find_all(ObjectId(user_id))
    return RM.success(pokemon_favorite)

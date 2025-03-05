@@ -8,7 +8,9 @@ class SuperClass:
 #De la clase estoy abstrayendo 
 
     def find_all(self):
-        data = self.collection.find() 
+        data = list(self.collection.find())
+        for datum in data:
+            datum["_id"] = str(datum["_id"])
         return list(data) 
 
     def find_by_id(self, object_id):

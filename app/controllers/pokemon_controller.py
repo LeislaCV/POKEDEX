@@ -17,7 +17,7 @@ def create():
     try:
         data = request.json
         pokemon_id = pokemon_model.create(data)  #Retorna el id insertado tipo especifico ObjectId
-        return RM.success({pokemon_id:str(pokemon_id)}), 200 #200 es un código de respuesta
+        return RM.success({pokemon_id:str(pokemon_id)}) #200 es un código de respuesta
 
     except ValidationError as err:
         return RM.error("Upss, Los parametros enviados son incorrectos"), 400
@@ -35,13 +35,13 @@ def delete(pokemon_id):
 @jwt_required()
 def get_pokemon(pokemon_id):
     pokemon = pokemon_model.find_by_id(ObjectId(pokemon_id))
-    return RM.success(pokemon), 200
+    return RM.success(pokemon)
 
 #OBTENER TODOS
 
-@bp.route("/get/<string:pokemon_all>", methods = ["GET"])
+@bp.route("/get", methods = ["GET"])
 @jwt_required()
-def get_all(pokemon_all):
-   pokemon = pokemon_model.find_all(ObjectId(pokemon_all))
+def get_all():
+   pokemon = pokemon_model.find_all()
    return RM.success(pokemon)
 
