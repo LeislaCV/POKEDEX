@@ -24,7 +24,7 @@ def create():
         data = pokemon_favorite_schema.load(request.json) #Valida la informacion que se esta mandando, si algo anda mal va lanzar un error, error de validación "try, except"
         data["user_id"] = user_id
         pokemon_favorite_id = pokemon_favorite_model.create(data)  #Retorna el id insertado tipo especifico ObjectId
-        return RM.succes({"_id":str(pokemon_favorite_id)}) #200 es un código de respuesta
+        return RM.success({"_id":str(pokemon_favorite_id)}) #200 es un código de respuesta
 
     except ValidationError as err:
         print(err)

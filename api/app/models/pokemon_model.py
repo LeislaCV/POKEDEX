@@ -1,5 +1,5 @@
 from app import mongo
-from app.models.super_clase import SuperClass
+from app.models.super_class import SuperClass
 
 class Pokemon(SuperClass): #La clase pokemon se esta heredando de la superclase
     def __init__(self): #Metodo super, hace referencia al padre SuperClase
@@ -13,5 +13,5 @@ class Pokemon(SuperClass): #La clase pokemon se esta heredando de la superclase
     def delete(self, object_id):
          raise NotImplementedError("Los pokemons bola no se pueden crear")
    
-    def update(self, obect_id):
+    def update(self, object_id):
          raise NotImplementedError("Los pokemons bola no se pueden crear") #Lanza errores, forma en python r

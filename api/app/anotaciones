@@ -26,13 +26,3 @@ getOne para saber que es, tenemos que ver que obtiene un parametro
 --------------------------------------------------------------------------------------------------------------------
 Modulo - entidades de la base de datos
 --------------------------------------------------------------------------------------------------------------------
-
-
-                                    CLASE  11 DE MARO DEL 2025
-Los 3 diseños los pasaremos a HTML y CSS, display flex, es con la que vamos a construir toda la pagina
-FlexFrog 
-ReactNative, los div equivalen a una etiqueta View, p equivalen a Text y 
-button a TouchableOpacity utilizan estilos en esta ocación CSS los pasaremos a manera de objeto
-
-EXPO, es un framework que nos permite hacer aplicaciones moviles con ReactNative, nos facilita utilizar todos los 
-componentes del cellphone, 

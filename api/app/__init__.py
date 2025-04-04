@@ -16,6 +16,7 @@ def create_app():
     app.config["MONGO_URI"] = os.getenv("MONGO_URI")
     app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
     app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1) #El token expira en una hora
+        
     mongo.init_app(app)
     jwt.init_app(app)
     CORS(app)

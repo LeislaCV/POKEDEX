@@ -20,14 +20,14 @@ def create():
         return RM.success({pokemon_id:str(pokemon_id)}) #200 es un código de respuesta
 
     except ValidationError as err:
-        return RM.error("Upss, Los parametros enviados son incorrectos"), 400
+        return RM.error("Upss, Los parametros enviados son incorrectos")
 
 #ELIMINAR
 
 @bp.route("/delete/<string:pokemon_id>", methods = ["DELETE"]) #Va venir con parametro con la ruta
 def delete(pokemon_id):
     pokemon_model.delete(ObjectId(pokemon_id)) #Esta recibiendo dos parametros, objectid
-    return RM.success("Yeiii, pokemon eliminado con éxito jiji"), 200
+    return RM.success("Yeiii, pokemon eliminado con éxito jiji")
 
 #OBTENER POR ID
 

@@ -1,5 +1,5 @@
 #Ruteo
-from flask import Blueprint, request #Blueprint seccionar el servidor por carpetitas, Request maneja la peticion que haga el usuario, jsonify  response  
+from flask import Blueprint, request#Blueprint seccionar el servidor por carpetitas, Request maneja la peticion que haga el usuario, jsonify  response  
 from app.schemas.users_schema import UserSchema
 from marshmallow import ValidationError
 from app.models.factory import ModelFactory #Traer la colección de usuarios
@@ -25,29 +25,27 @@ def login():
     if not email or not password:
       return RM.error("Upss, es necesario enviar todas las credenciales")
    
-    user= users_model.get_by_email_(email) #Va a traer el usuario si existe
+    user= users_model.get_by_email(email) #Va a traer el usuario si existe
     if not user:
         return RM.error("Upss, NO se encontro un usuario")
     if not EM.compare_hash(password, user["password"]):
         return RM.error("Upss, Credenciales invalidas") #PENDIENTE
-    return RM.success({"user":user, "token":create_access_token(user["_id"])}) #Serializar cambiar de tipo
+    return RM.success({"user":user, "token": create_access_token(user["_id"])}) #Serializar cambiar de tipo
 
-@bp.route("/register", methods=["POST"]) #
+@bp.route("/register", methods=['POST']) 
 def register():
+    
     try:
-      print("ddddddddddddddddddddddddd",request.json)
       data = user_schema.load(request.json) #Valida la informacion que se esta mandando, si algo anda mal va lanzar un error, error de validación "try, except"
       data["password"]= EM.create_hash(data["password"]) #Encriptar la contraseña
       user_id = users_model.create(data)  #Retorna el id insertado tipo especifico ObjectId
-      return RM.success({user_id:str(user_id), "token":create_access_token(str(user_id))}), 200 #200 es un código de respuesta
-
+      return RM.success({user_id:str(user_id), "token": create_access_token(str(user_id))}) #200 es un código de respuesta
     except ValidationError as err:
-       print(err)
-       return RM.error("Upss, Los parametros enviados son incorrectos"), 400 #Espera dos argumentos un mensaje y un código "err 400"  
+       return RM.error("Upss, Los parametros enviados son incorrectos")#Espera dos argumentos un mensaje y un código "err 400"  
     
     #ACTUALIZAR
             #Ruteo dinamico en la ruta 
-@bp.route("/update", methods = ["PUT"])
+@bp.route("/update", methods = ['PUT'])
 @jwt_required() #Va venir con parametro con la ruta
 def update():
     user_id = get_jwt_identity() #
@@ -61,7 +59,7 @@ def update():
     
     #ELIMINAR
 
-@bp.route("/delete", methods = ["DELETE"])
+@bp.route("/delete", methods = ['DELETE'])
 @jwt_required() #Va venir con parametro con la ruta
 def delete():
     user_id = get_jwt_identity()
@@ -70,7 +68,7 @@ def delete():
 
     #OBTENER
 
-@bp.route("/get", methods = ["GET"])
+@bp.route("/get", methods = ['GET'])
 @jwt_required()
 def get_user():
    user_id = get_jwt_identity()
